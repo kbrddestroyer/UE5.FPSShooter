@@ -37,9 +37,19 @@ protected:
 	void Look(const FInputActionValue&);
 	void Move(const FInputActionValue&);
 public:
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input/InputActions")
 	UInputAction* IAMove;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input/InputActions")
 	UInputAction* IALook;
+
+	UPROPERTY(
+		EditAnywhere, BlueprintReadOnly, 
+		Category = "Input/Controls",
+		meta = (ClampMin = "0", ClampMax = "1")
+	)
+	float fMouseSens;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Input/Controls")
+	bool bInvertedMouseInput;
 };

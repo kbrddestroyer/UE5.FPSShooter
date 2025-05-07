@@ -62,5 +62,11 @@ void ACPlayerController::Move(const FInputActionValue& value)
 
 void ACPlayerController::Look(const FInputActionValue& value)
 {
+	FVector2D inputValue2D = value.Get<FVector2D>();
 
+	if (inputValue2D == FVector2D::ZeroVector)
+		return;
+
+	AddControllerYawInput(inputValue2D.X);
+	AddControllerPitchInput(inputValue2D.Y * fMouseSens * (bInvertedMouseInput ? 1 : -1));
 }
